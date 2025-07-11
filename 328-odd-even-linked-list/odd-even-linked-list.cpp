@@ -22,13 +22,11 @@ public:
             odd = odd->next;
             even = even->next;
         }
-        if(odd->next && odd->next->next){
-            odd->next = odd->next->next;
-            odd = odd->next;
-        }
-        odd->next = evenHead;
-        
+        // if(odd->next && odd->next->next){
+        //     odd->next = odd->next->next;
+        //     odd = odd->next;
+        // }
+        odd->next = evenHead; 
         return head;
-        
     }
 };
