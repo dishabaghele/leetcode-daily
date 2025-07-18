@@ -21,7 +21,7 @@ public:
         temp = head;
         for(int i=0; i<v.size(); i++){
             temp->val = v[i];
-            temp = temp->next;
+            temp=temp->next;
         }
         return head;
     }
