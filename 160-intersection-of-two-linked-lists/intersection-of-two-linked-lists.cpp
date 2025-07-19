@@ -9,20 +9,42 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        map<ListNode*, int>hashMap;
-        ListNode*temp = headA;
-        while(temp){
-        hashMap[temp]++;
-        temp = temp->next; 
+        ListNode* temp1 = headA;
+        ListNode* temp2 = headB;
+        int cnt1 = 0;
+        int cnt2 = 0;
+        while(temp1){
+            cnt1++;
+            temp1 = temp1->next;
         }
-        temp = headB;
-        while(temp){
-            if(hashMap.count(temp)){
-                return temp;
+        while(temp2){
+            cnt2++;
+            temp2 = temp2->next;
+        }
+        int diff;
+        temp1 = headA;
+        temp2 = headB;
+        if(cnt1 > cnt2){
+            diff = cnt1 - cnt2;
+            while(diff){
+                diff--;
+                temp1 = temp1->next;
             }
-            temp = temp->next;
+        }else{
+            diff = cnt2 - cnt1;
+            while(diff){
+                diff--;
+                temp2 = temp2->next;
+            }
         }
+        while(temp1 != temp2){
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+            if(temp1 == temp2)
+            return temp1;
+        }
+         if(temp1 == temp2)
+            return temp1;
         return NULL;
-        
     }
 };
