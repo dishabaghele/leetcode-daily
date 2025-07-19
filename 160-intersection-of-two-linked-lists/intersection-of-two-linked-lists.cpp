@@ -24,22 +24,17 @@ public:
         int diff;
         temp1 = headA;
         temp2 = headB;
-        if(cnt1 > cnt2){
-            diff = cnt1 - cnt2;
-            while(diff){
-                diff--;
-                temp1 = temp1->next;
-            }
-        }else{
-            diff = cnt2 - cnt1;
-            while(diff){
-                diff--;
-                temp2 = temp2->next;
-            }
-        }
         while(temp1 != temp2){
             temp1 = temp1->next;
             temp2 = temp2->next;
+            if(temp1==temp2)
+            return temp1;
+            if(temp1 == NULL){
+                temp1 = headB;
+            }
+            if(temp2 == NULL){
+                temp2 = headA;
+            }
         }
         return temp1;
     }
