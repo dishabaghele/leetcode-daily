@@ -10,35 +10,28 @@
  */
 class Solution {
 public:
-    ListNode* getLastNode(ListNode* head, int k){
-        ListNode* temp = head;
-        int cnt = 0;
-        while(temp){
-            cnt++;
-            if(k == cnt)
-            return temp;
-            temp = temp->next;
-        }
-        return temp;
-    }
-
     ListNode* rotateRight(ListNode* head, int k) {
         if(head == NULL || head->next == NULL)
         return head;
-        int len  = 1;
-        ListNode* tail = head;
         ListNode* temp = head;
-        while(tail->next){
+        int len = 1;
+        while(temp->next){
+            temp = temp->next;
             len++;
-            tail = tail->next;
         }
-        if(k%len == 0)
-        return head;
         k = k%len;
-        tail->next = head;
-        ListNode* lastNode = getLastNode(temp, len-k);
-        head = lastNode->next;
-        lastNode->next = NULL;
-        return head;  
+        int pos = len - k;
+        pos--;
+        if(k == 0)
+        return head;
+        temp->next = head;
+        temp = head;
+        while(temp && pos){
+            pos--;
+            temp = temp->next;
+        }
+        head = temp->next;
+        temp->next = NULL;
+        return head;
     }
 };
