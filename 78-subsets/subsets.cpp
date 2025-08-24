@@ -1,23 +1,23 @@
 class Solution {
 public:
-    vector<vector<int>>genSubset(int ind, vector<int>&nums, vector<int>&subset, vector<vector<int>>&subsetArray){
+    void findAllSubset(int ind, vector<int>& nums, vector<int>& subset, vector<vector<int>>&ans){
         if(ind == nums.size()){
-            subsetArray.push_back(subset);
-            return subsetArray;
+            ans.push_back(subset);
+            return;
         }
-        //take
+
+        //pick
         subset.push_back(nums[ind]);
-        genSubset(ind+1, nums, subset, subsetArray);
+        findAllSubset(ind+1, nums, subset, ans);
         subset.pop_back();
 
-        //not take
-        genSubset(ind+1, nums, subset, subsetArray);
-        return subsetArray;
+        findAllSubset(ind+1, nums, subset, ans);
     }
-
+    
     vector<vector<int>> subsets(vector<int>& nums) {
-        vector<vector<int>>subsetArray;
+        vector<vector<int>>ans;
         vector<int>subset;
-        return genSubset(0, nums, subset, subsetArray);
+        findAllSubset(0, nums, subset, ans);
+        return ans;
     }
 };
