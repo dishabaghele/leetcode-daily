@@ -18,10 +18,7 @@ public:
     }
     vector<string> generateParenthesis(int n) {
         vector<string>ans;
-        string s = "(";
-        int open = 1;
-        int close = 0;
-        findAllParenthesis(n, s, open, close, ans);
+        findAllParenthesis(n, "", 0, 0, ans);
         return ans;
     }
 };
