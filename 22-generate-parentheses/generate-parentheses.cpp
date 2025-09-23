@@ -7,7 +7,7 @@ public:
             }
             return;
         }
-        if(close > open){
+        if(close > open || open > n){
             return;
         }
 
