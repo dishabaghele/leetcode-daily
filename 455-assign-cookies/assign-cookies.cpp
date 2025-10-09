@@ -7,10 +7,9 @@ public:
         sort(s.begin(), s.end());
         while(l < s.size() && r < g.size()){
             if(s[l] >= g[r]){
-                l++;r++;
+                r++;
             }
-            else l++;
-            // r++;
+            l++;
         }
         return r;
     }
