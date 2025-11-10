@@ -3,12 +3,12 @@ public:
     void findAllSubset(int ind, vector<int>& nums, vector<int>& subset, set<vector<int>>&ans){
         ans.insert(subset);
         if(ind == nums.size()) return;
-        //pick condition
+        //pick
         subset.push_back(nums[ind]);
         findAllSubset(ind+1, nums, subset, ans);
         subset.pop_back();
 
-        //not pick condition
+        //not pick
         findAllSubset(ind+1, nums, subset, ans);
     }
 
