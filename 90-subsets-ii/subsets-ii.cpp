@@ -1,21 +1,21 @@
 class Solution {
 public:
-    void findAllSubset(int ind, vector<int>& nums, vector<int>& subset, vector<vector<int>>& ans){
-        ans.push_back(subset);
+    void findAllCombination(int ind, vector<int>&nums, vector<int>&subset, set<vector<int>>&ans){
+        ans.insert(subset);
         if(ind == nums.size()) return;
         for(int i=ind; i<nums.size(); i++){
-            if(i > ind && nums[i] == nums[i-1]) continue;
+            if(i > ind && nums[i-1] == nums[i]) continue;
             subset.push_back(nums[i]);
-            findAllSubset(i+1, nums, subset, ans);
+            findAllCombination(i+1, nums, subset, ans);
             subset.pop_back();
         }
     }
-
+    
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        vector<vector<int>> ans;
-        vector<int>subset;
         sort(nums.begin(), nums.end());
-        findAllSubset(0, nums, subset, ans);
-        return ans;
+        set<vector<int>>ans;
+        vector<int>subset;
+        findAllCombination(0, nums, subset, ans);
+        return vector<vector<int>>(ans.begin(), ans.end());
     }
 };
