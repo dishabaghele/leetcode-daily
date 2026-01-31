@@ -9,7 +9,7 @@ public:
         while(r < s.size()){
             hashSet[s[r]-'A']++;
             maxFreq = max(maxFreq, hashSet[s[r]-'A']);
-            while((r-l+1) - maxFreq > k){
+            if((r-l+1) - maxFreq > k){
                 hashSet[s[l]-'A']--;
                 l++;
             }
