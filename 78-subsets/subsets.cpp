@@ -1,21 +1,19 @@
 class Solution {
 public:
-    void findAllSubset(int ind, vector<int>& nums, vector<int>& subset, set<vector<int>>&ans){
+    void findAllSubset(int ind, vector<int>& subset, vector<int>& nums,set<vector<int>>&ans){
         ans.insert(subset);
         if(ind == nums.size()) return;
-        //pick
-        subset.push_back(nums[ind]);
-        findAllSubset(ind+1, nums, subset, ans);
-        subset.pop_back();
-
-        //not pick
-        findAllSubset(ind+1, nums, subset, ans);
+        for(int i=ind; i<nums.size(); i++){
+            if(i != ind && nums[i-1] == nums[i]) continue;
+            subset.push_back(nums[i]);
+            findAllSubset(i+1, subset, nums, ans);
+            subset.pop_back();
+        }
     }
-
     vector<vector<int>> subsets(vector<int>& nums) {
         set<vector<int>>ans;
         vector<int>subset;
-        findAllSubset(0, nums, subset, ans);
+        findAllSubset(0, subset, nums, ans);
         return vector<vector<int>>(ans.begin(), ans.end());
     }
 };
