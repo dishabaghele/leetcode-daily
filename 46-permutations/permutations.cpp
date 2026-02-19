@@ -10,7 +10,9 @@ public:
             findAllPerm(ind+1, nums, ans);
             swap(nums[i], nums[ind]);
         }
+
     }
+
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>>ans;
         findAllPerm(0, nums, ans);
