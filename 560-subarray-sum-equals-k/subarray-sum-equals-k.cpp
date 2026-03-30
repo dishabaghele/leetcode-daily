@@ -1,9 +1,9 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
-        map<int, int>sumArray;
-        int cnt = 0;
         int sum = 0;
+        int cnt = 0;
+        unordered_map<int, int>sumArray;
         sumArray[0] = 1;
         for(int i=0; i<nums.size(); i++){
             sum += nums[i];
@@ -12,6 +12,6 @@ public:
             }
             sumArray[sum]++;
         }
-        return cnt;
+        return cnt; 
     }
 };
