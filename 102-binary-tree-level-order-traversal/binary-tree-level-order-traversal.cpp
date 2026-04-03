@@ -26,8 +26,8 @@ public:
                 if(current->left) q.push(current->left);
                 if(current->right) q.push(current->right);
             }
-            ans.push_back(list); 
+            ans.push_back(list);
         }
-        return ans; 
+        return ans;
     }
 };
