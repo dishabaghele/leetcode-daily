@@ -1,17 +1,17 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
+        int ans = 0;
+        unordered_map<int, int>map;
         int sum = 0;
-        int cnt = 0;
-        unordered_map<int, int>sumArray;
-        sumArray[0] = 1;
+        map[0] = 1;
         for(int i=0; i<nums.size(); i++){
             sum += nums[i];
-            if(sumArray.find(sum - k) != sumArray.end()){
-                cnt += sumArray[sum-k];
+            if(map.find(sum - k) != map.end()){
+                ans += map[sum-k];
             }
-            sumArray[sum]++;
+            map[sum]++;
         }
-        return cnt; 
+        return ans;
     }
 };
