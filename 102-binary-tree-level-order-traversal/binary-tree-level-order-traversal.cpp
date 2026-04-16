@@ -20,11 +20,11 @@ public:
             vector<int>list;
             int size = q.size();
             for(int i=0; i<size; i++){
-                TreeNode* current = q.front();
+                TreeNode* front = q.front();
                 q.pop();
-                list.push_back(current->val);
-                if(current->left) q.push(current->left);
-                if(current->right) q.push(current->right);
+                list.push_back(front->val);
+                if(front->left) q.push(front->left);
+                if(front->right) q.push(front->right);
             }
             ans.push_back(list);
         }
