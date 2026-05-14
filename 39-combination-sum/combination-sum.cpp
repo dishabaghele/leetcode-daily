@@ -1,23 +1,28 @@
 class Solution {
-public:
-    void findAllComb(int ind, vector<int>& candidates, int target, vector<int>& subset, vector<vector<int>>&ans){
+private:
+    void findAllCombSum(int ind, vector<int>& subset, vector<int>& candidates, int target, vector<vector<int>>& ans){
         if(target == 0){
             ans.push_back(subset);
             return;
         }
         if(ind == candidates.size()) return;
-        if(target >= candidates[ind]){
+
+        //take
+        if(candidates[ind] <= target){
             subset.push_back(candidates[ind]);
-            findAllComb(ind, candidates, target-candidates[ind], subset, ans);
+            findAllCombSum(ind, subset, candidates, target-candidates[ind], ans);
             subset.pop_back();
         }
-        findAllComb(ind+1, candidates, target, subset, ans);
+
+        //not-take
+        findAllCombSum(ind+1, subset, candidates, target, ans);
     }
 
+public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         vector<vector<int>>ans;
         vector<int>subset;
-        findAllComb(0, candidates, target, subset, ans);
-        return ans; 
+        findAllCombSum(0, subset, candidates, target, ans);
+        return ans;
     }
 };
